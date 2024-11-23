@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 
 class User {
@@ -6,10 +8,10 @@ class User {
   final String email;
   final String avatarUrl;
 
-  const User ({
+  const User({
     this.id,
-    @required this.name,
-    @required this.email,
-    @required this.avatarUrl,
-  })
+    required this.name,
+    required this.email,
+    required this.avatarUrl,
+  });
 }
