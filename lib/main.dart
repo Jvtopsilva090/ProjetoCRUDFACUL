@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/provider/users.dart';
+import 'package:myapp/routes/app_routes.dart';
+import 'package:myapp/view/user_form.dart';
 import 'package:myapp/view/user_list.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart'; // Para manipular a barra de status
@@ -41,7 +43,10 @@ class MyApp extends StatelessWidget {
           ),
           useMaterial3: true,
         ),
-        home: UserList(),
+        routes: {
+          AppRoutes.HOME: (_) => UserList(),
+          AppRoutes.USER_FORM: (_) => UserForm(),
+        },
       ),
     );
   }
