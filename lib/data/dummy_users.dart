@@ -1,6 +1,7 @@
 import 'package:myapp/models/user.dart';
 
-const DUMMY_USERS= {
+// ignore: constant_identifier_names
+const DUMMY_USERS = {
   '1': User(
     id: '1',
     name: 'Maria',
@@ -28,5 +29,11 @@ const DUMMY_USERS= {
     email: 'jorginho2020@gmail.com',
     avatarUrl:
         'https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png',
+  ),
+  '5': User(
+    id: '5',
+    name: 'João Vitor',
+    email: 'Shelbyjv09@gmail.com',
+    avatarUrl:'',
   ),
 };
