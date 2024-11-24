@@ -32,9 +32,10 @@ class Users with ChangeNotifier {
         user.id,
         (_) => User(
           id: user.id,
-          name: user.name,
+          nome: user.nome,
           email: user.email,
-          avatarUrl: user.avatarUrl,
+          numero: user.numero,
+          icone: user.icone,
         ),
       );
     } else {
@@ -43,9 +44,10 @@ class Users with ChangeNotifier {
         id,
         () => User(
           id: id,
-          name: user.name,
+          nome: user.nome,
           email: user.email,
-          avatarUrl: user.avatarUrl,
+          numero: user.numero,
+          icone: user.icone,
         ),
       );
     }

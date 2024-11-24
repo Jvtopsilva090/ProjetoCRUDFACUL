@@ -18,9 +18,10 @@ class _UserFormState extends State<UserForm> {
   void _loadFormData(User? user) {
     if (user != null) {
       _formData['id'] = user.id;
-      _formData['name'] = user.name;
+      _formData['nome'] = user.nome;
       _formData['email'] = user.email;
-      _formData['avatarUrl'] = user.avatarUrl;
+      _formData['numero'] = user.numero.toString();
+      _formData['icone'] = user.icone;
     }
   }
 
@@ -34,9 +35,10 @@ class _UserFormState extends State<UserForm> {
     Provider.of<Users>(context, listen: false).put(
       User(
         id: _formData['id'] ?? '',
-        name: _formData['name'] ?? 'Nome Padrão',
+        nome: _formData['nome'] ?? 'Nome Padrão',
         email: _formData['email'] ?? 'email@padrao.com',
-        avatarUrl: _formData['avatarUrl'] ?? '',
+        numero: _formData['numero'] ?? '6231564564',
+        icone: _formData['icone'] ?? '',
       ),
     );
 
@@ -70,7 +72,7 @@ class _UserFormState extends State<UserForm> {
           child: Column(
             children: [
               TextFormField(
-                initialValue: _formData['name'],
+                initialValue: _formData['nome'],
                 decoration: const InputDecoration(labelText: 'Nome Completo'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -81,7 +83,7 @@ class _UserFormState extends State<UserForm> {
                   }
                   return null;
                 },
-                onSaved: (value) => _formData['name'] = value,
+                onSaved: (value) => _formData['nome'] = value,
               ),
               TextFormField(
                 initialValue: _formData['email'],
@@ -95,9 +97,20 @@ class _UserFormState extends State<UserForm> {
                 onSaved: (value) => _formData['email'] = value,
               ),
               TextFormField(
-                initialValue: _formData['avatarUrl'],
+                initialValue: _formData['numero'],
+                decoration: const InputDecoration(labelText: 'Número de telefone'),
+                validator: (value) {
+                  if (value?.length != 11) {
+                    return 'Número inválido.';
+                  }
+                  return null;
+                },
+                onSaved: (value) => _formData['numero'] = value,
+              ),
+              TextFormField(
+                initialValue: _formData['icone'],
                 decoration: const InputDecoration(labelText: 'URL do Avatar'),
-                onSaved: (value) => _formData['avatarUrl'] = value,
+                onSaved: (value) => _formData['icone'] = value,
               ),
             ],
           ),

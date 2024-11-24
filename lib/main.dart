@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/data/dbconnector.dart';
+import 'package:myapp/models/usuario.dart';
 import 'package:myapp/provider/users.dart';
 import 'package:myapp/routes/app_routes.dart';
 import 'package:myapp/view/user_form.dart';
@@ -6,7 +8,7 @@ import 'package:myapp/view/user_list.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart'; // Para manipular a barra de status
 
-void main() {
+void main() async {
   runApp(MyApp());
 }
 
@@ -29,6 +31,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           brightness: Brightness.dark, // Define o tema escuro
           scaffoldBackgroundColor: Colors.black, // Fundo preto
