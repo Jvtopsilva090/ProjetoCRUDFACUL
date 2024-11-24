@@ -1,21 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/provider/users.dart';
 import 'package:myapp/view/user_list.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter/services.dart'; // Para manipular a barra de status
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
+// ignore: use_key_in_widget_constructors
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    // Remove ou altera a cor da barra de status antes de rodar o app
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent, // Torna a faixa de status transparente
+        statusBarIconBrightness: Brightness.light, // Cor dos ícones da barra de status (opcional)
       ),
-      home: const UserList(),
+    );
+
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (ctx) => Users(),
+        ),
+      ],
+      child: MaterialApp(
+        theme: ThemeData(
+          brightness: Brightness.dark, // Define o tema escuro
+          scaffoldBackgroundColor: Colors.black, // Fundo preto
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.deepPurple,
+            brightness: Brightness.dark, // Garante a consistência no tema escuro
+          ),
+          textTheme: TextTheme(
+            bodyMedium: TextStyle(
+              color: Colors.purpleAccent, // Letras roxas
+            ),
+          ),
+          useMaterial3: true,
+        ),
+        home: UserList(),
+      ),
     );
   }
 }
