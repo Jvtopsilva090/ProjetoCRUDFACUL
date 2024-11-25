@@ -14,6 +14,8 @@ dependencies:
   characters: any
   collection: any
   material_color_utilities: any
+  sqflite: ^2.4.1
+  path: ^1.9.0
 
 dev_dependencies:
   flutter_test:
