@@ -15,11 +15,18 @@ class Usuario {
 
   Map<String, Object?> toMap() {
     return {
+<<<<<<< HEAD
       //'id': this.id,
       'nome': this.nome,
       'email': this.email,
       'numero': this.numero,
       'icone': this.icone,
+=======
+      'nome': nome,
+      'email': email,
+      'numero': numero,
+      'icone': icone,
+>>>>>>> d2b590c (Descrição das mudanças realizadas)
     };
   }
 

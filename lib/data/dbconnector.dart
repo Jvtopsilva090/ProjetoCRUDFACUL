@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+// ignore_for_file: depend_on_referenced_packages
+
+>>>>>>> d2b590c (Descrição das mudanças realizadas)
 import 'dart:async';
 
 import 'package:flutter/widgets.dart';
