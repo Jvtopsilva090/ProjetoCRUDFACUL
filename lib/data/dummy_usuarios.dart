@@ -10,4 +10,5 @@ const DUMMY_USERS = {
   '6': Usuario(id: '6', nome: 'Pedro', email: 'pedrouhhgs215@gmail.com', numero: '12345678910', icone: ''),
   '7': Usuario(id: '7', nome: 'Patricia', email: 'pati123@gmail.com', numero: '12345678910', icone: ''),
   '8': Usuario(id: '8', nome: 'karine', email: 'karinedatropa@gmail.com', numero: '12345678910', icone: ''),
+
 };

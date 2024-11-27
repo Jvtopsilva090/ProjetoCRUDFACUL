@@ -1,5 +1,9 @@
+/*
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/widgets.dart';
-import 'package:myapp/models/usuario.dart';
+import 'package:flutter_crud/models/usuario.dart';
+//import 'package:myapp/models/usuario.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -32,4 +36,4 @@ class DBConnector {
   //editar
 
   //excluir
-}
+}*/
