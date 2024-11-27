@@ -5,7 +5,7 @@ import 'package:flutter_crud/provider/usuariosProvider.dart'; // Importa o prove
 import 'package:flutter_crud/routes/app_routes.dart'; // Importa as rotas definidas para navegação.
 import 'package:flutter_crud/views/usuario_edit.dart'; // Importa a página de edição de usuário.
 import 'package:flutter_crud/views/usuario_form.dart'; // Importa a página de formulário de usuário.
-import 'package:flutter_crud/views/usuario.dart'; // Importa a página principal de usuários.
+import 'package:flutter_crud/views/lista_de_usuarios.dart'; // Importa a página principal de usuários.
 import 'package:provider/provider.dart'; // Importa o pacote para gerenciar estado com o Provider.
 
 void main() {
