@@ -1,6 +1,8 @@
-// ignore_for_file: constant_identifier_names
-
 class AppRoutes {
+  // ignore: constant_identifier_names
   static const HOME = '/';
-  static const USER_FORM = '/user-form';
+  // ignore: constant_identifier_names
+  static const USER_FORM = '/usuario-form';
+  // ignore: constant_identifier_names
+  static const USER_EDIT_FORM = '/usuario-editar-form';
 }
