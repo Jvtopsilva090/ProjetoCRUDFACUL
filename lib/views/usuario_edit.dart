@@ -23,6 +23,7 @@ class UserEditForm extends StatelessWidget {
     'https://cdn.pixabay.com/photo/2021/04/20/07/59/woman-6193184_1280.jpg',
     'https://cdn.pixabay.com/photo/2023/06/23/11/23/ai-generated-8083323_1280.jpg',
     'https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_1280.png',
+    'https://miro.medium.com/v2/resize:fit:2400/1*k38PmUEbJR64Tbdz6sPNjA.jpeg',
   ];
 
   void _loadFormData(Usuario user) {
