@@ -1,19 +1,27 @@
-// ignore_for_file: prefer_const_constructors
+import 'package:flutter/material.dart';
+import 'package:flutter_crud/domain/business/user_manager.dart';
+import 'package:flutter_crud/data/router/app_routes.dart';
+import 'package:flutter_crud/screens/usuario_edit.dart';
+import 'package:flutter_crud/screens/usuario_form.dart';
+import 'package:flutter_crud/screens/lista_de_usuarios.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_crud/data/default_users.dart';
 
-import 'package:flutter/material.dart'; // Importa os widgets principais do Flutter.
-import 'package:flutter_crud/provider/usuariosProvider.dart'; // Importa o provedor de usuários.
-import 'package:flutter_crud/routes/app_routes.dart'; // Importa as rotas definidas para navegação.
-import 'package:flutter_crud/views/usuario_edit.dart'; // Importa a página de edição de usuário.
-import 'package:flutter_crud/views/usuario_form.dart'; // Importa a página de formulário de usuário.
-import 'package:flutter_crud/views/lista_de_usuarios.dart'; // Importa a página principal de usuários.
-import 'package:provider/provider.dart'; // Importa o pacote para gerenciar estado com o Provider.
-
-void main() {
-  runApp(const MyApp()); // Inicia o aplicativo com a classe `MyApp`.
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  for (var user in defaultUsers) {
+    UserManager().inserirUsuario(user);
+  }
+  UserManager().pegarUsuarios().then((usuarios) => {
+    print(usuarios),
+    print(usuarios.length),
+    print("cachorro" + usuarios.elementAt(0).toString())
+  });
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key}); // Construtor da classe `MyApp`.
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +30,11 @@ class MyApp extends StatelessWidget {
       providers: [
         // Define os provedores para gerenciar estados globais.
         ChangeNotifierProvider(
-          create: (ctx) => Users(), // Cria uma instância do gerenciador de usuários.
+          create: (ctx) => UserManager(),
         ),
       ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: 
-            false, // Remove o banner de "Debug" do canto superior direito.
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           brightness: Brightness.dark, // Define o tema como escuro.
           scaffoldBackgroundColor: 
@@ -36,7 +43,7 @@ class MyApp extends StatelessWidget {
             seedColor: Colors.deepPurple, // Define a cor base do tema como roxo profundo.
             brightness: Brightness.dark, // Garante a consistência do tema escuro.
           ),
-          textTheme: TextTheme(
+          textTheme: const TextTheme(
             bodyMedium: TextStyle(
               color: Colors.purpleAccent, // Define a cor padrão do texto como roxo claro.
             ),
@@ -77,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // Método que constrói a interface da página.
+    // Metodo que constrói a interface da página.
     return Scaffold(
       appBar: AppBar(
         // Barra de navegação superior.
@@ -101,10 +108,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        // Botão flutuante no canto inferior direito.
-        onPressed: _incrementCounter, // Ação do botão: chama a função de incremento.
-        tooltip: 'Increment', // Tooltip exibido ao manter o cursor sobre o botão.
-        child: const Icon(Icons.add), // Ícone de adição no botão.
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
       ),
     );
   }

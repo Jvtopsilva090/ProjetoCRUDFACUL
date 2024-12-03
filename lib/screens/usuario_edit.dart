@@ -1,10 +1,11 @@
 // ignore_for_file: unnecessary_null_comparison
 
 import 'package:flutter/material.dart';
-import 'package:flutter_crud/components/notificacao.dart';
-import 'package:flutter_crud/models/usuario.dart';
-import 'package:flutter_crud/provider/usuariosProvider.dart';
+import 'package:flutter_crud/domain/business/user_manager.dart';
 import 'package:provider/provider.dart';
+
+import '../domain/models/usuario.dart';
+import 'components/notificacao.dart';
 
 class UserEditForm extends StatelessWidget {
   UserEditForm({super.key});
@@ -23,11 +24,12 @@ class UserEditForm extends StatelessWidget {
     'https://cdn.pixabay.com/photo/2021/04/20/07/59/woman-6193184_1280.jpg',
     'https://cdn.pixabay.com/photo/2023/06/23/11/23/ai-generated-8083323_1280.jpg',
     'https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_1280.png',
+    'https://miro.medium.com/v2/resize:fit:2400/1*k38PmUEbJR64Tbdz6sPNjA.jpeg',
   ];
 
   void _loadFormData(Usuario user) {
     if (user != null) {
-      _formData['id'] = user.id;
+      _formData['id'] = user.id as String?;
       _formData['nome'] = user.nome;
       _formData['email'] = user.email;
       _formData['numero'] = user.numero;
@@ -51,8 +53,8 @@ class UserEditForm extends StatelessWidget {
               if (_form.currentState!.validate()) {
                 _form.currentState!.save();
 
-                Provider.of<Users>(context, listen: false).put(Usuario(
-                  id: _formData['id'] ?? '',
+                Provider.of<UserManager>(context, listen: false).atualizarUsuario(Usuario(
+                  id: _formData['id'] as int? ?? 0,
                   nome: _formData['nome'] ?? '',
                   email: _formData['email'] ?? '',
                   numero: _formData['numero'] ?? '',

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_crud/components/notificacao.dart';
-import 'package:flutter_crud/models/usuario.dart';
-import 'package:flutter_crud/provider/usuariosProvider.dart';
-import 'package:flutter_crud/routes/app_routes.dart';
+import 'package:flutter_crud/data/router/app_routes.dart';
+import 'package:flutter_crud/domain/business/user_manager.dart';
 import 'package:provider/provider.dart';
+
+import '../../domain/models/usuario.dart';
+import 'notificacao.dart';
 
 class UserTile extends StatelessWidget {
   final Usuario user;
@@ -51,8 +52,8 @@ class UserTile extends StatelessWidget {
                             TextButton(
                               child: const Text('Sim'),
                               onPressed: () {
-                                Provider.of<Users>(context, listen: false)
-                                    .remove(user);
+                                Provider.of<UserManager>(context, listen: false)
+                                    .deletarUsuario(user.id!);
                                 Navigator.of(context).pop(true);
                                 Notify.show(context, 'Usuário deletado com sucesso!');
                               },

@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_crud/components/usuario_tile.dart';
-import 'package:flutter_crud/provider/usuariosProvider.dart';
-import 'package:flutter_crud/routes/app_routes.dart';
+import 'package:flutter_crud/data/router/app_routes.dart';
+import 'package:flutter_crud/domain/business/user_manager.dart';
+import 'package:flutter_crud/domain/models/usuario.dart';
 import 'package:provider/provider.dart';
+
+import 'components/usuario_tile.dart';
 
 class UsersHomePage extends StatelessWidget {
   const UsersHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Users users = Provider.of<Users>(context); // Correção na tipagem
+    final UserManager users = Provider.of<UserManager>(context); // Correção na tipagem
+    List<Usuario> usuarios = [];
+    UserManager().pegarUsuarios().then((us) => {
+      usuarios = us
+    });
 
     return Scaffold(
       appBar: AppBar(
@@ -34,8 +40,8 @@ class UsersHomePage extends StatelessWidget {
         centerTitle: true,
       ),
       body: ListView.builder(
-        itemCount: users.count,
-        itemBuilder: (ctx, i) => UserTile(users.byIndex(i)),
+        itemCount: usuarios.length,
+        itemBuilder: (ctx, i) => UserTile(usuarios.elementAt(i)),
       ),
     );
   }

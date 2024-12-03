@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_crud/components/notificacao.dart';
-import 'package:flutter_crud/models/usuario.dart';
-import 'package:flutter_crud/provider/usuariosProvider.dart';
+import 'package:flutter_crud/domain/business/user_manager.dart';
 import 'package:provider/provider.dart';
+
+import '../domain/models/usuario.dart';
+import 'components/notificacao.dart';
 
 class UserForm extends StatelessWidget {
   UserForm({super.key});
@@ -36,8 +37,8 @@ class UserForm extends StatelessWidget {
               if (_form.currentState!.validate()) {
                 _form.currentState!.save();
 
-                Provider.of<Users>(context, listen: false).put(Usuario(
-                  id: _formData['id'] ?? '',
+                Provider.of<UserManager>(context, listen: false).inserirUsuario(Usuario(
+                  id: _formData['id'] as int? ?? 0,
                   nome: _formData['nome'] ?? '',
                   email: _formData['email'] ?? '',
                   numero: _formData['numero'] ?? '',
