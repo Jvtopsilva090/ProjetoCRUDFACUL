@@ -1,7 +1,7 @@
 
 import '../domain/models/usuario.dart';
 
-const List<Usuario> defaultUsers = [
+List<Usuario> defaultUsers = [
   Usuario(
     nome: "João Shelby",
     email: "",
@@ -12,7 +12,7 @@ const List<Usuario> defaultUsers = [
     nome: "Ariel Jooj",
     email: "",
     numero: "unknown",
-    icone: "https://avatars.githubusercontent.com/u/142360875?v=4",
+    icone: "",
   ),
   Usuario(
     nome: "Leandro Galdino",
@@ -29,12 +29,6 @@ const List<Usuario> defaultUsers = [
   Usuario(
     nome: "Pedro Marques",
     email: "",
-    numero: "unknown",
-    icone: "",
-  ),
-  Usuario(
-    nome: "Cachorro",
-    email: "auau@gmail.com",
     numero: "unknown",
     icone: "",
   ),

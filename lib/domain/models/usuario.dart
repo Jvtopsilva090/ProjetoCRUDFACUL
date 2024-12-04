@@ -3,9 +3,9 @@ class Usuario {
   final String nome;
   final String email;
   final String numero;
-  final String icone;
+  String icone;
 
-  const Usuario({
+  Usuario({
     this.id,
     required this.nome,
     required this.email,
