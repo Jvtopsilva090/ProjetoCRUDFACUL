@@ -20,7 +20,6 @@ class _UserFormState extends State<UserForm> {
 
   @override
   Widget build(BuildContext context) {
-    _formData['icone'] = '';
     return Scaffold(
       appBar: AppBar(
         title: const Text(
