@@ -7,8 +7,10 @@ import '../models/usuario.dart';
 
 class UserManager with ChangeNotifier {
 
-  Future<bool> verificarUsuario(Usuario user, Database db) async {
+  Future<bool> verificarUsuario(Usuario user, Database db, bool estaAtualizando) async {
     final List<Usuario> usuarios = await pegarUsuarios();
+
+    if (estaAtualizando) return true;
 
     //verificando se o nome do usuario a ser inserido existe dentro do banco
     for (var usuario in usuarios) {
@@ -24,7 +26,7 @@ class UserManager with ChangeNotifier {
     final db = await AppDatabase.instance.database;
 
     if (db == null) return;
-    //if (!await verificarUsuario(user, db)) return;
+    if (!await verificarUsuario(user, db, false)) return;
 
     await db.insert(
       AppDatabase.tableName,
@@ -37,7 +39,7 @@ class UserManager with ChangeNotifier {
     final db = await AppDatabase.instance.database;
 
     if (db == null) return;
-    //if (!await verificarUsuario(user, db)) return;
+    if (!await verificarUsuario(user, db, true)) return;
 
     await db.update(
       AppDatabase.tableName,
