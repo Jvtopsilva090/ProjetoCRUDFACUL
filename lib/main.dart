@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_crud/data/default_users.dart';
+import 'package:flutter_crud/data/user_manager.dart';
 import 'package:flutter_crud/provider/usuarios_provider.dart';
 import 'package:flutter_crud/routes/app_routes.dart';
 import 'package:flutter_crud/views/lista_de_usuarios.dart';
@@ -8,6 +10,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  for (var usuario in defaultUsers) {UserManager().inserirUsuario(usuario);}
   runApp(const MyApp());
 }
 
@@ -30,20 +33,15 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor:
           Colors.black,
           colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.deepPurple,
+            seedColor: const Color(0xffBD93F9),
             brightness: Brightness.dark,
-          ),
-          textTheme: const TextTheme(
-            bodyMedium: TextStyle(
-              color: Colors.purpleAccent,
-            ),
           ),
           useMaterial3: true,
         ),
         routes: {
           AppRoutes.HOME: (_) => const HomePage(),
-          AppRoutes.USER_FORM: (_) => UserForm(),
-          AppRoutes.USER_EDIT_FORM: (_) => UserEditForm(),
+          AppRoutes.USER_FORM: (_) => const UserForm(),
+          AppRoutes.USER_EDIT_FORM: (_) => const UserEditForm(),
         },
       ),
     );

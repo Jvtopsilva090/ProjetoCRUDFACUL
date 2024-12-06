@@ -6,10 +6,6 @@ class Users with ChangeNotifier {
 
   List<Usuario> _usuarios = [];
 
-  Users() {
-    atualizarLista();
-  }
-
   List<Usuario> get all {
     return _usuarios;
   }
@@ -18,7 +14,7 @@ class Users with ChangeNotifier {
     return _usuarios.length;
   }
 
-  Usuario? byID(int id) {
+  Usuario? byIndex(int id) {
     for (var usuario in _usuarios) {
       if (usuario.id == id) return usuario;
     }
@@ -30,7 +26,6 @@ class Users with ChangeNotifier {
     if (user.id != null || user.id == 0) {
       // Atualizar usuário existente
       UserManager().atualizarUsuario(user);
-      atualizarLista();
     } else {
       // Adicionar novo usuário. ID gerado automaticamente pelo SGBD SQLite.
       UserManager().inserirUsuario(user);
@@ -40,7 +35,7 @@ class Users with ChangeNotifier {
   }
 
   void remove(Usuario user) {
-    if (user.id != null || user.id == 0) return;
+    if (user.id == null || user.id == 0) return;
 
     UserManager().deletarUsuario(user.id!);
     atualizarLista();
@@ -49,9 +44,8 @@ class Users with ChangeNotifier {
   }
 
   //Conecta ao BD e atualiza a lista de Usuario;
-  void atualizarLista() {
-    UserManager().pegarUsuarios().then((value) {
-      _usuarios = value;
-    });
+  Future<List<Usuario>> atualizarLista() async {
+    _usuarios = await UserManager().pegarUsuarios();
+    return _usuarios;
   }
 }

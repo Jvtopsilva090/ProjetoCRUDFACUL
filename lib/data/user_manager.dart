@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_crud/components/notificacao.dart';
 import 'package:flutter_crud/data/app_database.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -11,7 +12,9 @@ class UserManager with ChangeNotifier {
 
     //verificando se o nome do usuario a ser inserido existe dentro do banco
     for (var usuario in usuarios) {
-      if (usuario.nome == user.nome) return false;
+      if (usuario.nome == user.nome) {
+        return false;
+      };
     }
 
     return true;
@@ -21,7 +24,7 @@ class UserManager with ChangeNotifier {
     final db = await AppDatabase.instance.database;
 
     if (db == null) return;
-    if (!await verificarUsuario(user, db)) return;
+    //if (!await verificarUsuario(user, db)) return;
 
     await db.insert(
       AppDatabase.tableName,
@@ -34,7 +37,7 @@ class UserManager with ChangeNotifier {
     final db = await AppDatabase.instance.database;
 
     if (db == null) return;
-    if (!await verificarUsuario(user, db)) return;
+    //if (!await verificarUsuario(user, db)) return;
 
     await db.update(
       AppDatabase.tableName,

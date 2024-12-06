@@ -13,9 +13,9 @@ class UserTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final avatar = user.icone.isEmpty
+    final avatar = user.icone.isEmpty || user.icone == ''
         ? const CircleAvatar(child: Icon(Icons.person))
-        : CircleAvatar(backgroundImage: AssetImage(user.icone));
+        : CircleAvatar(backgroundImage: AssetImage('assets/icons/${user.icone}'));
 
     return ListTile(
       leading: avatar,

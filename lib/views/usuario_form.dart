@@ -20,6 +20,7 @@ class _UserFormState extends State<UserForm> {
 
   @override
   Widget build(BuildContext context) {
+    _formData['icone'] = '';
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -69,8 +70,8 @@ class _UserFormState extends State<UserForm> {
                       onTap: () => {
                         setState(() {
                           icone.selected = true;
+                          _formData['icone'] = icone.dir;
                         }),
-                        _formData['icone'] = icone.dir,
                       },
                       child: Container(
                         decoration: BoxDecoration(
