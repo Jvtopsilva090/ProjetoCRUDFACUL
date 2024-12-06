@@ -1,8 +1,8 @@
 
 class Icone {
 
-  @override
   final String dir;
+
   bool selected = false;
 
   Icone({required this.dir});

@@ -1,5 +1,4 @@
-
-import '../domain/models/usuario.dart';
+import '../models/usuario.dart';
 
 List<Usuario> defaultUsers = [
   Usuario(

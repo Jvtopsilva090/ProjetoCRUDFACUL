@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_crud/data/app_database.dart';
-import 'package:flutter_crud/domain/models/usuario.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../models/usuario.dart';
 
 class UserManager with ChangeNotifier {
 
@@ -27,8 +28,6 @@ class UserManager with ChangeNotifier {
       user.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
-
-    notifyListeners();
   }
 
   Future<void> atualizarUsuario(Usuario user) async {
@@ -43,8 +42,6 @@ class UserManager with ChangeNotifier {
       where: 'id = ?',
       whereArgs: [user.id],
     );
-
-    notifyListeners();
   }
 
   Future<void> deletarUsuario(int id) async {
@@ -57,8 +54,6 @@ class UserManager with ChangeNotifier {
       where: 'id = ?',
       whereArgs: [id],
     );
-
-    notifyListeners();
   }
 
   Future<List<Usuario>> pegarUsuarios() async {

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_crud/domain/business/user_manager.dart';
-import 'package:flutter_crud/domain/models/usuario.dart';
-import 'package:flutter_crud/screens/edit_form.dart';
-import 'package:flutter_crud/screens/user_form.dart';
+import 'package:flutter_crud/data/user_manager.dart';
 
-import 'components/notificacao.dart';
+import '../components/notificacao.dart';
+import '../models/usuario.dart';
+import '../views/usuario_edit.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,24 +20,8 @@ class HomePageState extends State<HomePage> {
   @override
   Scaffold build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(),
       body: body(context),
-      floatingActionButton: button(context),
     );
-  }
-
-  AppBar appBar() {
-    return
-      AppBar(
-        title: const Text(
-          'CRUD HUB',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        elevation: 0.0,
-        centerTitle: true,
-      );
   }
 
   Widget? body(BuildContext context) {
@@ -95,7 +78,7 @@ class HomePageState extends State<HomePage> {
                         onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => const EditFormPage(),
+                              builder: (context) => const UserEditForm(),
                               settings: RouteSettings(
                                 arguments: user,
                               )
@@ -143,22 +126,6 @@ class HomePageState extends State<HomePage> {
               ),
             );
         },
-      );
-  }
-
-  FloatingActionButton button(BuildContext context) {
-    return
-      FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const UserFormPage())
-          ).then((value) {
-            setState(() {
-              atualizarLista();
-            });
-          });
-        },
-        child: const Icon(Icons.add),
       );
   }
 
